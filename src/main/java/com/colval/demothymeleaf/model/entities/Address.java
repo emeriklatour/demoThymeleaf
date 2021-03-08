@@ -75,11 +75,11 @@ public class Address implements Serializable {
         this.district = district;
     }
 
-    public City getCityId() {
+    public City getCity() {
         return this.city;
     }
 
-    public void setCityId(City city) {
+    public void setCity(City city) {
         this.city = city;
     }
 

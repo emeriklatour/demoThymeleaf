@@ -44,6 +44,9 @@ public class CustomerService implements ICustomerService {
         return customerRepository.findAllCustomerSortedByLastName();
     }
 
+
+
+
     @Override
     public Customer updateFirstNameAndLastName(Long customerId, String firstName, String lastName) {
         Optional<Customer> customerRecover = this.readOne(customerId);
@@ -63,4 +66,9 @@ public class CustomerService implements ICustomerService {
     public List<Customer> findAllCustomerIdDescAndLimitTen() {
         return customerRepository.findAllCustomerIdDesc().stream().limit(10).collect(Collectors.toList());
     }
+    @Override
+    public List<Customer> getAllCustomerWithFirstNameSubStr(String subStr) {
+        return customerRepository.findByFirstNameSubStr(subStr);
+    }
+
 }

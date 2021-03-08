@@ -9,4 +9,5 @@ import java.util.Optional;
 public interface ICustomerRepository extends JpaRepository<Customer, Long> {
     List<Customer> findAllCustomerSortedByLastName();
     List<Customer> findAllCustomerIdDesc();
+    List<Customer> findByFirstNameSubStr(String subStr);
 }

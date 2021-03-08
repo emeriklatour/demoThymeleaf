@@ -19,8 +19,10 @@ import java.io.Serializable;
         , @NamedQuery(name = "Customer.findByLastUpdate", query = "SELECT c FROM Customer c WHERE c.lastUpdate = :lastUpdate")
         , @NamedQuery(name = "Customer.findAllCustomerSortedByLastName", query = "SELECT  c FROM Customer c order by c.lastName asc")
         , @NamedQuery(name = "Customer.findAllCustomerIdDesc", query = "SELECT c FROM Customer c ORDER BY c.customerId desc ")
+        , @NamedQuery(name = "Customer.findByFirstNameSubStr", query = "select c from Customer c where substring(c.firstName, 1, length(:subStr)) = :subStr")
 
-        })
+
+})
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -102,11 +104,11 @@ public class Customer implements Serializable {
         this.email = email;
     }
 
-    public Address getAddressId() {
+    public Address getAddress() {
         return this.address;
     }
 
-    public void setAddressId(Address address) {
+    public void setAddress(Address address) {
         this.address = address;
     }
 

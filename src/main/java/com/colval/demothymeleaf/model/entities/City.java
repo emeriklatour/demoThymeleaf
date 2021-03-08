@@ -51,7 +51,7 @@ public class City implements Serializable {
         this.city = city;
     }
 
-    public Country getCountryId() {
+    public Country getCountry() {
         return this.country;
     }
 

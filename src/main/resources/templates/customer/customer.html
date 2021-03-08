@@ -4,8 +4,28 @@
 <head>
     <meta charset="UTF-8">
     <title>Demo - Thymeleaf</title>
+    <link th:href="@{/css/style.css}" rel="stylesheet" />
+    <!-- jquery datepicker -->
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script>
+        $( function() {
+            $( "#datepicker" ).datepicker();
+        } );
+    </script>
 </head>
 <body>
+<!-- header -->
+<div th:replace="fragments/header::top-nav"></div>
+
+<h3 class="card-title" th:text="'Nombre de client: ' + ${nbCustomer}"></span></h3>
+<form method="post" th:action="@{/customer/do_search_name}" th:object="${searchNames}">
+    <input required th:field="*{firstName}" type="text" placeholder="rechercher...">
+    <p>Date: <input type="text" id="datepicker"></p>
+    <button type="submit">OK</button>
+</form>
 <table class="table table-hover">
     <thead class="text-warning">
     <th>Nom</th>
@@ -20,12 +40,14 @@
         <td th:text="${customer.lastName}"></td>
         <td th:text="${customer.firstName}"></td>
         <td th:text="${customer.email}"></td>
-        <td th:text="${customer.addressId.cityId.city}"></td>
-        <td th:text="${customer.addressId.cityId.countryId.country}"></td>
+        <td th:text="${customer.address.city.city}"></td>
+        <td th:text="${customer.address.city.country.country}"></td>
+        <td><a th:href="${'/customer/'+customer.customerId}">Details</a></td>
+
     </tr>
     </tbody>
 </table>
-
-
+<!-- footer -->
+<div th:replace="fragments/footer::footer"></div>
 </body>
 </html>
