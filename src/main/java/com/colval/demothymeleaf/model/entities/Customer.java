@@ -16,10 +16,11 @@ import java.io.Serializable;
         , @NamedQuery(name = "Customer.findByEmail", query = "SELECT c FROM Customer c WHERE c.email = :email")
         , @NamedQuery(name = "Customer.findByActive", query = "SELECT c FROM Customer c WHERE c.active = :active")
         , @NamedQuery(name = "Customer.findByCreateDate", query = "SELECT c FROM Customer c WHERE c.createDate = :createDate")
-        , @NamedQuery(name = "Customer.findByLastUpdate", query = "SELECT c FROM Customer c WHERE c.lastUpdate = :lastUpdate")
+        , @NamedQuery(name = "Customer.getCustomerDetailsByDate", query = "SELECT c FROM Customer c WHERE c.lastUpdate = :lastUpdate")
         , @NamedQuery(name = "Customer.findAllCustomerSortedByLastName", query = "SELECT  c FROM Customer c order by c.lastName asc")
         , @NamedQuery(name = "Customer.findAllCustomerIdDesc", query = "SELECT c FROM Customer c ORDER BY c.customerId desc ")
-        , @NamedQuery(name = "Customer.findByFirstNameSubStr", query = "select c from Customer c where substring(c.firstName, 1, length(:subStr)) = :subStr")
+        , @NamedQuery(name = "Customer.getSimilarFirstLastName", query = "select c from Customer c where substring(c.firstName, 1, length(:subStr)) = :subStr " +
+        "or substring(c.lastName, 1, length(:subStr)) = :subStr")
 
 
 })

@@ -24,17 +24,17 @@ public class CustomerController {
     @GetMapping("/all") //GetMapping source de fichiers == resource/templates
     public String customer(Model model){
         model.addAttribute("searchNames", new SearchNameViewModel());
-        model.addAttribute("allCustomer", customerService.readAll().stream().limit(10).collect(Collectors.toList()));
+        model.addAttribute("allCustomer", customerService.readAll().stream().limit(50).collect(Collectors.toList()));
         model.addAttribute("nbCustomer", customerService.countAllCustomer());
         return "customer/customer"; //read as folder/file
     }
 
 
     @PostMapping("/do_search_name")
-    public String searchCustomerByName(Model model, SearchNameViewModel searchNameViewModel){
+    public String getSimilarFirstLastName(Model model, SearchNameViewModel searchNameViewModel){
         System.out.println(searchNameViewModel.getFirstName());
-        String firsNameSubStr = searchNameViewModel.getFirstName();
-        List<Customer> customersWithName = customerService.getAllCustomerWithFirstNameSubStr(firsNameSubStr);
+        String nameSubStr = searchNameViewModel.getFirstName();
+        List<Customer> customersWithName = customerService.getAllCustomerWithFirstLastNameSubStr(nameSubStr);
         int nbCustomers = customersWithName.size();
         model.addAttribute("searchNames", new SearchNameViewModel());
         model.addAttribute("allCustomer", customersWithName);
@@ -43,7 +43,7 @@ public class CustomerController {
     }
 
     @GetMapping("/{id}")
-    public String getCountry(Model model, @PathVariable Long id){
+    public String getCustomerDetails(Model model, @PathVariable Long id){
 
         Optional<Customer> customer=customerService.readOne(id);
 

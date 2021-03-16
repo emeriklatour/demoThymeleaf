@@ -14,10 +14,10 @@
 <body>
 <!-- header -->
 <div th:replace="fragments/header::top-nav"></div>
+<h3 class="card-title" th:text="'Nombre de Staff: ' + ${nbStaff}"></span></h3>
 
-<h3 class="card-title" th:text="'Nombre de client: ' + ${nbCustomer}"></span></h3>
-<form method="post" th:action="@{/customer/do_search_name}" th:object="${searchNames}">
-    <input required th:field="*{firstName}" type="text" placeholder="rechercher...">
+<form method="post" th:action="@{/staff/do_search_by_store}" th:object="${searchStore}">
+    <input required th:field="*{storeId}" type="text" placeholder="rechercher par store ID...">
     <button type="submit">OK</button>
 </form>
 <table class="table table-hover">
@@ -26,19 +26,14 @@
     <th>Nom</th>
     <th>Prenom(s)</th>
     <th>Email</th>
-    <th>Adresse</th>
-    <th>District</th>
-    <th>Code Postal</th>
     </thead>
     <tbody>
-    <tr th:each="customer:${allCustomer}">
-        <td><a th:href="${'/customer/'+customer.customerId}" th:text="${customer.customerId}"></a></td>
-        <td th:text="${customer.lastName}"></td>
-        <td th:text="${customer.firstName}"></td>
-        <td th:text="${customer.email}"></td>
-        <td th:text="${customer.address.address}"></td>
-        <td th:text="${customer.address.getDistrict()}"></td>
-        <td th:text="${customer.address.postalCode}"></td>
+    <tr th:each="staff:${allStaff}">
+        <td th:text="${staff.staffId}"></td>
+        <td th:text="${staff.lastName}"></td>
+        <td th:text="${staff.firstName}"></td>
+        <td th:text="${staff.email}"></td>
+
 
     </tr>
     </tbody>

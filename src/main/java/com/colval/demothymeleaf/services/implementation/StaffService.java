@@ -41,4 +41,8 @@ public class StaffService implements IStaffService {
         Collections.shuffle(staff);
         return staff.stream().limit(10).collect(Collectors.toList());
     }
+
+    public List<Staff> findAllByStore(Long storeId) {
+        return staffRepository.findAllByStore(storeId);
+    }
 }

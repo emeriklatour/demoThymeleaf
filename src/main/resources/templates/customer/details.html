@@ -15,8 +15,8 @@
 <p>Nom: <span th:text="${customer.firstName}"></span></p>
 <p>Email: <span th:text="${customer.email}"></span></p>
 <p>Addresse: <span th:text="${customer.getAddress().getAddress()}"></span></p>
-<p>Ville: <span th:text="${customer.getAddress().getCity().getCity()}"></span></p>
-<p>Pays: <span th:text="${customer.getAddress().getCity().getCountry().getCountry()}"></span></p>
+<p>District: <span th:text="${customer.getAddress().getDistrict()}"></span></p>
+<p>Code Postal: <span th:text="${customer.getAddress().getPostalCode()}"></span></p>
 
 <!-- FOOTER -->
 <div th:replace="fragments/footer::footer"></div>

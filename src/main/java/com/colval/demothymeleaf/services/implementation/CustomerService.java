@@ -67,8 +67,8 @@ public class CustomerService implements ICustomerService {
         return customerRepository.findAllCustomerIdDesc().stream().limit(10).collect(Collectors.toList());
     }
     @Override
-    public List<Customer> getAllCustomerWithFirstNameSubStr(String subStr) {
-        return customerRepository.findByFirstNameSubStr(subStr);
+    public List<Customer> getAllCustomerWithFirstLastNameSubStr(String subStr) {
+        return customerRepository.getSimilarFirstLastName(subStr);
     }
 
 }

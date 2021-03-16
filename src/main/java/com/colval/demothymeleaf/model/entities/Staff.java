@@ -20,7 +20,8 @@ import java.io.Serializable;
         , @NamedQuery(name = "Staff.findByActive", query = "SELECT s FROM Staff s WHERE s.active = :active")
         , @NamedQuery(name = "Staff.findByUsername", query = "SELECT s FROM Staff s WHERE s.username = :username")
         , @NamedQuery(name = "Staff.findByPassword", query = "SELECT s FROM Staff s WHERE s.password = :password")
-        , @NamedQuery(name = "Staff.findByLastUpdate", query = "SELECT s FROM Staff s WHERE s.lastUpdate = :lastUpdate")})
+        , @NamedQuery(name = "Staff.findByLastUpdate", query = "SELECT s FROM Staff s WHERE s.lastUpdate = :lastUpdate")
+        , @NamedQuery(name = "Staff.findAllByStore", query = "SELECT s FROM Staff s WHERE s.store.storeId = :storeId")})
 
 public class Staff implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -112,8 +113,8 @@ public class Staff implements Serializable {
         this.email = email;
     }
 
-    public Store getStoreId() {
-        return this.store;
+    public long getStoreId() {
+        return this.store.getStoreId();
     }
 
     public void setStoreId(Store store) {
