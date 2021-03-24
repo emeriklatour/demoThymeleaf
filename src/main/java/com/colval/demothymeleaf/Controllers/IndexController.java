@@ -23,4 +23,11 @@ public class IndexController {
         model.addAttribute("Greetings", "Hello World Emerik! " + strDate);
         return "index/index"; //read as folder/file
     }
+
+    @GetMapping("/login")
+    public String login() {
+        return "login/login";
+    }
+
+
 }

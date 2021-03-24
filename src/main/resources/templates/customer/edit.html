@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Demo - Thymeleaf</title>
+    <link th:href="@{/assets/css/style.css}" rel="stylesheet" />
+</head>
+<body>
+<!-- header -->
+<div th:replace="fragments/header::top-nav"></div>
+
+<!-- FOOTER -->
+<div th:replace="fragments/footer::footer"></div>
+</body>
+</html>
